@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import RequestedPartners from "./RequestedPartners";
 import MyPartners from "./MyPartners";
+import ReceivedPartners from "./ReceivedPartners";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -48,6 +49,7 @@ export default function MenuTab() {
         <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <StyledTab label="내 파트너" {...a11yProps(0)} />
           <StyledTab label="보낸 요청" {...a11yProps(1)} />
+          <StyledTab label="받은 요청" {...a11yProps(2)} />
         </StyledTabs>
       </StyledTabsWrapper>
       <CustomTabPanel value={value} index={0}>
@@ -55,6 +57,9 @@ export default function MenuTab() {
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <RequestedPartners />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={2}>
+        <ReceivedPartners />
       </CustomTabPanel>
     </Box>
   );
