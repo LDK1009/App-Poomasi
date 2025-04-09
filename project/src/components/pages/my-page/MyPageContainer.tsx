@@ -8,14 +8,7 @@ import { styled, CircularProgress } from "@mui/material";
 import { mixinContainer, mixinFlex } from "@/styles/mixins";
 import AccountInformation from "./AccountInformation";
 import MenuList from "./MenuList";
-import {
-  InfoOutlined,
-  NotificationsOutlined,
-  SecurityOutlined,
-  SettingsOutlined,
-  HelpOutlineOutlined,
-  FeedbackOutlined,
-} from "@mui/icons-material";
+import { HandshakeOutlined, NotificationsActiveOutlined, PermIdentityOutlined, RateReviewOutlined } from "@mui/icons-material";
 import ButtonGroup from "./ButtonGroup";
 
 /**
@@ -60,50 +53,32 @@ const MyPageContainer = () => {
       category: "계정 설정",
       menus: [
         {
-          title: "개인정보 관리",
-          icon: <InfoOutlined />,
+          title: "내 정보",
+          icon: <PermIdentityOutlined />,
           onClick: () => {
             router.push("/my-page/account-information");
           },
         },
         {
-          title: "알림 설정",
-          icon: <NotificationsOutlined />,
+          title: "품앗이 파트너",
+          icon: <HandshakeOutlined   />,
           onClick: () => {
-            alert("알림 설정");
+            router.push("/my-page/partner-relationship");
+          },
+        },
+
+        {
+          title: "알림",
+          icon: <NotificationsActiveOutlined />,
+          onClick: () => {
+            alert("준비중인 기능입니다.");
           },
         },
         {
-          title: "보안 설정",
-          icon: <SecurityOutlined />,
+          title: "피드백",
+          icon: <RateReviewOutlined />,
           onClick: () => {
-            alert("보안 설정");
-          },
-        },
-      ],
-    },
-    {
-      category: "앱 설정",
-      menus: [
-        {
-          title: "앱 환경설정",
-          icon: <SettingsOutlined />,
-          onClick: () => {
-            alert("앱 환경설정");
-          },
-        },
-        {
-          title: "도움말",
-          icon: <HelpOutlineOutlined />,
-          onClick: () => {
-            alert("도움말");
-          },
-        },
-        {
-          title: "피드백 보내기",
-          icon: <FeedbackOutlined />,
-          onClick: () => {
-            alert("피드백 보내기");
+            alert("준비중인 기능입니다.");
           },
         },
       ],
