@@ -5,14 +5,16 @@ import { Button, styled, Typography } from "@mui/material";
 import Image from "next/image";
 import React, { useEffect } from "react";
 import { CottageOutlined } from "@mui/icons-material";
-import { getCurrentUser } from "@/service/auth";
+import { getCurrentUser, getCurrentUserAccountInfo } from "@/service/auth";
 import { enqueueSnackbar } from "notistack";
 import { useAuthStore } from "@/store";
+import { useRouter } from "next/navigation";
 
 const SignInSuccessContainer = () => {
   // Store
   const { setUser } = useAuthStore();
 
+  const router = useRouter();
   // useEffect
   useEffect(() => {
     async function getUserInfo() {
@@ -30,7 +32,16 @@ const SignInSuccessContainer = () => {
         enqueueSnackbar("유저 정보 가져오기 오류 발생", { variant: "error" });
       }
     }
+
+    async function checkSignInUp() {
+      const { error } = await getCurrentUserAccountInfo();
+      if (error) {
+        router.push("/my-page/account-information");
+      }
+    }
+    
     getUserInfo();
+    checkSignInUp();
   }, [setUser]);
 
   return (
