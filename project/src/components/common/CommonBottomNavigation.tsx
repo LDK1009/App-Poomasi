@@ -4,7 +4,7 @@ import * as React from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { Paper, styled } from "@mui/material";
-import { SearchOutlined, CottageOutlined, PersonOutlineOutlined } from "@mui/icons-material";
+import { CottageOutlined, PersonOutlineOutlined, SearchOutlined } from "@mui/icons-material";
 import { mixinFlex } from "@/styles/mixins";
 import Link from "next/link";
 
@@ -20,7 +20,7 @@ export default function LabelBottomNavigation() {
       href: "/",
     },
     {
-      label: "검색",
+      label: "테스터 찾기",
       value: "search",
       icon: <SearchOutlined />,
       href: "/",

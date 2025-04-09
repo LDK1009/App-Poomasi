@@ -1,7 +1,7 @@
 {
-  "name": "Uni-Q",
-  "short_name": "Uni-Q",
-  "description": "대학교 학과별 면접 질문 플랫폼",
+  "name": "앱 품앗이",
+  "short_name": "앱 품앗이",
+  "description": "구글 플레이스토어 비공개 테스트 품앗이 플랫폼",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "display": "standalone",

@@ -92,6 +92,9 @@ const ButtonGroup = () => {
             color="primary"
             startIcon={<LogoutOutlined />}
             onClick={handleSignOut}
+            sx={{
+              color: "white",
+            }}
           >
             로그아웃
           </LogoutButton>

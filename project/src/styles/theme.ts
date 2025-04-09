@@ -32,7 +32,7 @@ declare module "@mui/material/styles" {
   }
 }
 
-// 연애재판 서비스에 어울리는 색상 팔레트
+// 서비스에 어울리는 색상 팔레트
 export const muiTheme = createTheme({
   palette: {
     primary: {

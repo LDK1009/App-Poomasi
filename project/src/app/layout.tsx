@@ -9,19 +9,19 @@ import GlobalStyles from "@/styles/GlobalStyles";
 // SEO 메타데이터
 export const metadata: Metadata = {
   manifest: "/manifest.json",
-  title: "웹사이트 이름",
-  description: "웹사이트 설명",
-  keywords: "키워드1, 키워드2, 키워드3, ...",
+  title: "앱 품앗이",
+  description: "구글 플레이스토어 비공개 테스트 품앗이 플랫폼",
+  keywords: "앱 품앗이, 구글 플레이스토어 비공개 테스트 품앗이 플랫폼",
   openGraph: {
-    title: "웹사이트 이름",
-    description: "웹사이트 설명",
-    url: "웹사이트 URL(예시 : https://example.com)",
+    title: "앱 품앗이",
+    description: "구글 플레이스토어 비공개 테스트 품앗이 플랫폼",
+    url: "https://www.app-poomasi.site",
     images: [
       {
-        url: "https://example.com/img/logo-512.png",
+        url: "https://www.app-poomasi.site/img/logo-512.png",
         width: 512,
         height: 512,
-        alt: "your_app_name-logo",
+        alt: "앱 품앗이-logo",
       },
     ],
     type: "website",

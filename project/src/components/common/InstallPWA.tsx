@@ -135,7 +135,7 @@ const InstallPWA = () => {
   return (
     <>
       {/* 고정 설치 버튼 (화면 우측 하단에 고정) */}
-      <InstallButton variant="contained" color="primary" startIcon={<GetApp />} onClick={handleInstallClick}>
+      <InstallButton variant="contained" color="primary" startIcon={<GetApp />} onClick={handleInstallClick} sx={{ color: "white" }}>
         앱 설치하기
       </InstallButton>
 
@@ -161,7 +161,7 @@ const InstallPWA = () => {
             </>
           }
         >
-          📱 연애재판 앱 설치하기
+          📱 앱 품앗이 설치하기
         </Alert>
       </Snackbar>
     </>
@@ -176,7 +176,7 @@ export default InstallPWA;
  */
 const InstallButton = styled(Button)`
   position: fixed;
-  bottom: 60px;
+  bottom: 64px;
   right: 8px;
   z-index: 1000;
   border-radius: 28px;

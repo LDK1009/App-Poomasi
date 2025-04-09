@@ -19,7 +19,13 @@ import {
 } from "@mui/material";
 import { mixinFlex } from "@/styles/mixins";
 import { useAuthStore } from "@/store";
-import { GavelRounded, PersonOutline, Menu as MenuIcon, ListAlt, AddCircleOutline } from "@mui/icons-material";
+import {
+  PersonOutline,
+  Menu as MenuIcon,
+  WorkspacesRounded,
+  SearchOutlined,
+  CottageOutlined,
+} from "@mui/icons-material";
 import Link from "next/link";
 
 /**
@@ -46,8 +52,8 @@ const CommonHeader = () => {
   /////////////////////////////// Variables ///////////////////////////////
   const drawerWidth = 250;
   const navItems = [
-    { title: "메뉴1", path: "/", icon: <ListAlt /> },
-    { title: "메뉴2", path: "/", icon: <AddCircleOutline /> },
+    { title: "홈", path: "/", icon: <CottageOutlined /> },
+    { title: "테스터 찾기", path: "/", icon: <SearchOutlined /> },
     user.isSignIn
       ? { title: "마이페이지", path: "/my-page", icon: <PersonOutline /> }
       : { title: "로그인", path: "/auth/sign-in", icon: <PersonOutline /> },
@@ -60,10 +66,10 @@ const CommonHeader = () => {
         {/* 로고 섹션 */}
         <LogoContainer>
           <IconButton component={Link} href="/" color="inherit">
-            <GavelRounded />
+            <WorkspacesRounded />
           </IconButton>
           <Typography variant="h6" component={Link} href="/" sx={{ textDecoration: "none", color: "inherit" }}>
-            연애재판
+            앱 품앗이
           </Typography>
         </LogoContainer>
 
@@ -98,10 +104,10 @@ const CommonHeader = () => {
         {/* 헤더 */}
         <Grid2 container justifyContent="center" alignItems="center">
           <IconButton component={Link} href="/" color="primary">
-            <GavelRounded />
+            <WorkspacesRounded />
           </IconButton>
           <Typography variant="h6" sx={{ my: 2 }} color="primary">
-            연애재판
+            앱 품앗이
           </Typography>
         </Grid2>
         {/* 구분선 */}
