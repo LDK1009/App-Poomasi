@@ -49,7 +49,7 @@ const AccountInformationContainer = () => {
     };
 
     if (!email || !app_name || !google_form_link || !android_app_link || !web_participation_link) {
-      enqueueSnackbar("모든 필드를 입력해주세요.", { variant: "info" });
+      enqueueSnackbar("모든 필드를 입력해주세요.", { variant: "warning" });
       return;
     }
 
@@ -61,7 +61,7 @@ const AccountInformationContainer = () => {
       return;
     }
 
-    enqueueSnackbar("계정 정보를 저장 성공", { variant: "success" });
+    enqueueSnackbar("계정 정보 저장 성공", { variant: "success" });
   }
 
   /////////////////////////////// Effects ///////////////////////////////

@@ -114,7 +114,7 @@ export async function getCurrentUserAccountInfo() {
   }
 
   
-  const { data : userInfo, error : userInfoError } = await supabase.from("users").select("*").eq("uid", uid).single();
+  const { data : userInfo, error : userInfoError } = await supabase.from("users").select("*").eq("id", uid).single();
 
   if(userInfoError) {
     return {data : null, error : "유저 정보 가져오기 오류 발생"};
