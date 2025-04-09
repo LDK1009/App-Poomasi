@@ -63,7 +63,7 @@ const MyPageContainer = () => {
           title: "개인정보 관리",
           icon: <InfoOutlined />,
           onClick: () => {
-            alert("개인정보 관리");
+            router.push("/my-page/account-information");
           },
         },
         {

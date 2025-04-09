@@ -24,6 +24,7 @@
 
 import api from "@/lib/apiClient";
 import { supabase } from "@/lib/supabaseClient";
+import { UserInformationType } from "@/types/user";
 
 ////////// 로그인
 export async function signIn() {
@@ -93,8 +94,19 @@ export async function getCurrentUserEmail() {
   return response;
 }
 
-// 현재 로그인한 유저 마이페이지 정보 정보 가져오기
-export async function getCurrentUserMyPageInfo() {
+////////// 유저 계정 정보 삽입하기
+export async function insertUserAccountInfo(userInfo : UserInformationType) {
+  const { error} = await supabase.from("users").insert(userInfo);
+
+  if(error) {
+    return {data : null, error : "유저 계정 정보 삽입 오류 발생"};
+  }
+
+  return {data : null, error : null};
+}
+
+////////// 현재 로그인한 유저 계정 정보 가져오기
+export async function getCurrentUserAccountInfo() {
   const {data : uid, error : uidError} = await getCurrentUserUID();
   
   if(uidError) {
@@ -110,3 +122,12 @@ export async function getCurrentUserMyPageInfo() {
 
   return {data : userInfo, error : null};
 }
+
+
+////////// 현재 로그인한 유저 계정 정보 업데이트하기
+export async function upsertCurrentUserAccountInfo(userInfo : UserInformationType) {
+  const { error } = await supabase.from("users").upsert(userInfo);
+
+  return { data: null, error };
+}
+
