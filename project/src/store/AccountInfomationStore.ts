@@ -10,7 +10,6 @@ const initUserInfo: UserInformationType = {
   google_form_link: "",
   android_app_link: "",
   web_participation_link: "",
-  manners_temperature: 0,
 };
 
 // 계정 정보 스토어 타입 정의
