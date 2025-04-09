@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { styled, Typography, Button } from "@mui/material";
-import { CottageOutlined } from "@mui/icons-material";
+import { CottageOutlined, Google } from "@mui/icons-material";
 import { enqueueSnackbar } from "notistack";
 
 import { signIn } from "@/service/auth";
@@ -38,21 +38,18 @@ const SignInContainer = () => {
       <LogoImage src="/img/logo-512.png" alt="로고 이미지" width={200} height={200} priority />
 
       <ButtonWrap>
-        <HomeButton href="/" variant="contained" startIcon={<CottageOutlined />}>
+        <HomeButton href="/" variant="outlined" startIcon={<CottageOutlined />}>
           홈페이지 바로가기
         </HomeButton>
 
-        <KakaoButton
+        <GoogleButton
           onClick={handleSignIn}
           variant="contained"
-          startIcon={<Image src="/svg/kakao-icon.svg" alt="카카오 아이콘" width={20} height={20} />}
-          sx={{ 
-            backgroundColor: "#fee500", 
-            "&:hover": { backgroundColor: "#efd300" } 
-          }}
+          startIcon={<Google sx={{ color: "primary.main" }} />}
+          fullWidth
         >
-          카카오로 로그인
-        </KakaoButton>
+          Google 로그인
+        </GoogleButton>
       </ButtonWrap>
     </Container>
   );
@@ -99,22 +96,17 @@ const ButtonWrap = styled("div")`
 const HomeButton = styled(Button)`
   width: 100%;
   height: 48px;
-  font-weight: 500;
-  text-transform: none;
+  color: ${({ theme }) => theme.palette.primary.main};
+  border: 1px solid ${({ theme }) => theme.palette.primary.main};
 `;
 
-const KakaoButton = styled(Button)`
+const GoogleButton = styled(Button)`
   width: 100%;
   height: 48px;
-  background-color: #fee500;
-  ${({ theme }) => mixinFontColor(theme, "black")};
-  font-weight: 500;
-  text-transform: none;
-  
-  &.MuiButton-contained {
-    background-color: #fee500;
-    &:hover {
-      background-color: #efd300;
-    }
+  color: white;
+  box-shadow: 0 4px 4px 0 rgba(76, 175, 80, 0.1);
+
+  & svg {
+    color: white;
   }
 `;

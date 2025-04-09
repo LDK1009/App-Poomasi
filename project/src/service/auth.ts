@@ -28,7 +28,7 @@ import { supabase } from "@/lib/supabaseClient";
 ////////// 로그인
 export async function signIn() {
   const response = await supabase.auth.signInWithOAuth({
-    provider: "kakao",
+    provider: "google",
     options: {
       redirectTo: `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/sign-in/success`,
     },
@@ -91,4 +91,22 @@ export async function getCurrentUserEmail() {
   };
 
   return response;
+}
+
+// 현재 로그인한 유저 마이페이지 정보 정보 가져오기
+export async function getCurrentUserMyPageInfo() {
+  const {data : uid, error : uidError} = await getCurrentUserUID();
+  
+  if(uidError) {
+    return {data : null, error : "유저 uid 가져오기 오류 발생"};
+  }
+
+  
+  const { data : userInfo, error : userInfoError } = await supabase.from("users").select("*").eq("uid", uid).single();
+
+  if(userInfoError) {
+    return {data : null, error : "유저 정보 가져오기 오류 발생"};
+  }
+
+  return {data : userInfo, error : null};
 }

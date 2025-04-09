@@ -48,7 +48,7 @@ const SignInSuccessContainer = () => {
 
       <Img src={"/img/logo-512.png"} alt="" width={200} height={200} />
       <ButtonWrap>
-        <HomeButton href="/" variant="contained" startIcon={<CottageOutlined />}>
+        <HomeButton href="/" variant="contained" startIcon={<CottageOutlined />} sx={{color: "white"}}>
           홈으로
         </HomeButton>
       </ButtonWrap>
