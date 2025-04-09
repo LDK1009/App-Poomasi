@@ -131,3 +131,11 @@ export async function upsertCurrentUserAccountInfo(userInfo : UserInformationTyp
   return { data: null, error };
 }
 
+// 모든 유저 계정 정보 가져오기
+export async function getAllUserAccountInfo() {
+  const { data, error } = await supabase.from("users").select("*");
+
+  return { data, error };
+}
+
+
