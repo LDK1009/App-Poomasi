@@ -1,7 +1,6 @@
 import { Button, Stack, styled, Typography } from "@mui/material";
-import Image from "next/image";
 import { formatDate } from "@/utils/time";
-import { ForwardToInboxRounded } from "@mui/icons-material";
+import { ForwardToInboxRounded, WorkspacesRounded } from "@mui/icons-material";
 import { PartnerRelationshipItemType } from "@/types/partner-relationship";
 import { deletePartnerRelationship, updatePartnerRelationship } from "@/service/partner-relationship";
 import { enqueueSnackbar } from "notistack";
@@ -54,7 +53,7 @@ const PartnerRelationshipCard = ({ info, type }: PropsType) => {
       {/* 헤더 */}
       <CardHeader status={info.status}>
         <Stack direction="row" alignItems="center" columnGap={0.5}>
-          <Image src={"/img/logo-192.png"} alt="app_icon" width={24} height={24} />
+          <WorkspacesRounded sx={{ fontSize: 14, color: "white" }} />
           <CreatedTimeText variant="caption">{formatDate(info.created_at as string)}</CreatedTimeText>
         </Stack>
         <StatusText variant="body2" fontWeight={"600"}>
@@ -127,7 +126,7 @@ const CardHeader = styled(Stack)<CardHeaderProps>`
     (status === "requested" && theme.palette.primary.main) ||
     (status === "approved" && theme.palette.info.main) ||
     (status === "rejected" && theme.palette.error.main)};
-  padding: 0px 8px;
+  padding: 4px 8px;
   border-radius: 8px 8px 0 0;
 `;
 
