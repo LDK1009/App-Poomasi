@@ -6,6 +6,7 @@ import { styled } from "@mui/material/styles";
 import RequestedPartners from "./RequestedPartners";
 import MyPartners from "./MyPartners";
 import ReceivedPartners from "./ReceivedPartners";
+import { useMenuTabStore } from "@/store";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -37,28 +38,28 @@ function a11yProps(index: number) {
 }
 
 export default function MenuTab() {
-  const [value, setValue] = React.useState(0);
+  const { currentTab, setCurrentTab } = useMenuTabStore();
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+    setCurrentTab(newValue);
   };
 
   return (
     <Box sx={{ width: "100%" }}>
       <StyledTabsWrapper>
-        <StyledTabs value={value} onChange={handleChange} aria-label="basic tabs example">
+        <StyledTabs value={currentTab} onChange={handleChange} aria-label="basic tabs example">
           <StyledTab label="내 파트너" {...a11yProps(0)} />
           <StyledTab label="보낸 요청" {...a11yProps(1)} />
           <StyledTab label="받은 요청" {...a11yProps(2)} />
         </StyledTabs>
       </StyledTabsWrapper>
-      <CustomTabPanel value={value} index={0}>
+      <CustomTabPanel value={currentTab} index={0}>
         <MyPartners />
       </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
+      <CustomTabPanel value={currentTab} index={1}>
         <RequestedPartners />
       </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
+      <CustomTabPanel value={currentTab} index={2}>
         <ReceivedPartners />
       </CustomTabPanel>
     </Box>
