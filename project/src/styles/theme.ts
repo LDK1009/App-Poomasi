@@ -30,6 +30,10 @@ declare module "@mui/material/styles" {
       900: string;
     };
   }
+
+  interface TypeText {
+    white: string;
+  }
 }
 
 // 서비스에 어울리는 색상 팔레트
@@ -76,6 +80,8 @@ export const muiTheme = createTheme({
     text: {
       primary: "#212121",
       secondary: "#757575",
+      disabled: "rgba(0, 0, 0, 0.38)",
+      white: "#FFFFFF",
     },
   },
   typography: {
