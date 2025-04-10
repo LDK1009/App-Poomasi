@@ -3,7 +3,6 @@ import InstallPWA from "@/components/common/InstallPWA";
 import { styled } from "@mui/material";
 import { Box, Button, Grid2, Stack, Typography } from "@mui/material";
 import { mixinContainer } from "@/styles/mixins";
-import Image from "next/image";
 import {
   HandshakeOutlined,
   TrendingUpOutlined,
@@ -42,23 +41,13 @@ const MainContainer = () => {
             </PrimaryButton>
           </ButtonGroup>
         </HeroContent>
-        <ImageContainer>
-          <Image
-            src="/img/hero-image.png"
-            alt="품앗이 파트너 서비스 이미지"
-            width={500}
-            height={400}
-            style={{ objectFit: "contain" }}
-            priority
-          />
-        </ImageContainer>
       </HeroSection>
 
       {/* 특징 섹션 */}
       <FeaturesSection>
         <SectionTitle variant="h4">주요 기능</SectionTitle>
         <FeaturesGrid container spacing={4}>
-          <Grid2>
+          <Grid2 size={12}>
             <FeatureCard>
               <FeatureIconWrapper>
                 <HandshakeOutlined fontSize="large" />
@@ -70,7 +59,7 @@ const MainContainer = () => {
               </FeatureDescription>
             </FeatureCard>
           </Grid2>
-          <Grid2>
+          <Grid2 size={12}>
             <FeatureCard>
               <FeatureIconWrapper>
                 <TrendingUpOutlined fontSize="large" />
@@ -81,7 +70,7 @@ const MainContainer = () => {
               </FeatureDescription>
             </FeatureCard>
           </Grid2>
-          <Grid2>
+          <Grid2 size={12}>
             <FeatureCard>
               <FeatureIconWrapper>
                 <SecurityOutlined fontSize="large" />
@@ -143,6 +132,8 @@ export default MainContainer;
 // 스타일 컴포넌트
 const MainWrapper = styled(Stack)`
   ${mixinContainer};
+  justify-content: center;
+  align-items: center;
   row-gap: 40px;
 `;
 
@@ -192,20 +183,6 @@ const PrimaryButton = styled(Button)`
   border-radius: 30px;
   text-transform: none;
   color: ${({ theme }) => theme.palette.text.white};
-`;
-
-const ImageContainer = styled(Box)`
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-40%);
-  z-index: 0;
-  opacity: 0.9;
-  display: none;
-
-  @media (min-width: 960px) {
-    display: block;
-  }
 `;
 
 const FeaturesSection = styled(Box)``;
