@@ -30,3 +30,25 @@ export async function getReceivedPartnerRelationship(approverId: string) {
 
   return response;
 }
+
+// 이미 파트너 관계가 있는지 확인
+export async function getIsAlreadyPartnerRelationship(requesterId: string, approverId: string) {
+  const {data, error} = await supabase.from("partner_relationship").select(`*`).eq("requester_id", requesterId).eq("approver_id", approverId);
+  if (error) {
+    return { data: null, error };
+  }
+
+  if (data.length > 0) {
+    return { data: true, error: null };
+  }
+  
+  return { data: false, error: null };
+}
+
+// 파트너 관계 삭제
+export async function deletePartnerRelationship(requesterId: string, approverId: string) {
+  const response = await supabase.from("partner_relationship").delete().eq("requester_id", requesterId).eq("approver_id", approverId);
+
+  return response;
+}
+

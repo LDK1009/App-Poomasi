@@ -1,4 +1,4 @@
-import { postPartnerRelationship } from "@/service/partner-relationship";
+import { getIsAlreadyPartnerRelationship, postPartnerRelationship } from "@/service/partner-relationship";
 import { useAuthStore } from "@/store";
 import { UserInformationType } from "@/types/user";
 import { Button, Grid2, styled, Typography } from "@mui/material";
@@ -9,6 +9,19 @@ const PartnerCard = ({ info }: { info: UserInformationType }) => {
 
   // 파트너 추가 함수
   async function handleAddPartner() {
+    const { data: isAlreadyPartnerRelationship, error: isAlreadyPartnerRelationshipError } =
+      await getIsAlreadyPartnerRelationship(user.uid, info.id);
+
+    if (isAlreadyPartnerRelationshipError) {
+      enqueueSnackbar("파트너 추가 실패", { variant: "error" });
+      return;
+    }
+
+    if (isAlreadyPartnerRelationship === true) {
+      enqueueSnackbar("이미 추가된 파트너입니다.", { variant: "warning" });
+      return;
+    }
+
     const { error } = await postPartnerRelationship({
       requester_id: user.uid,
       approver_id: info.id,
