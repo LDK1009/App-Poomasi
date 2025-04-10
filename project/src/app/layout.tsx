@@ -5,6 +5,7 @@ import ClientSnackbarProvider from "@/lib/ClientSnackbarProvider";
 import CommonBottomNavigation from "@/components/common/CommonBottomNavigation";
 import CommonHeader from "@/components/common/CommonHeader";
 import GlobalStyles from "@/styles/GlobalStyles";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 // SEO 메타데이터
 export const metadata: Metadata = {
@@ -61,6 +62,7 @@ export default function RootLayout({
           </ThemeProviderWrapper>
         </AppRouterCacheProvider>
       </body>
+      <GoogleAnalytics gaId="G-WLDT64VYHD" />
     </html>
   );
 }
