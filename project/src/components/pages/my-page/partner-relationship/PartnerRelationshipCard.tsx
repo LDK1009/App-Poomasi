@@ -112,6 +112,7 @@ export default PartnerRelationshipCard;
 const CardContainer = styled(Stack)`
   border: 1px solid ${({ theme }) => theme.palette.primary.main};
   border-radius: 8px;
+  overflow: hidden;
 `;
 
 type CardHeaderProps = {
@@ -127,7 +128,6 @@ const CardHeader = styled(Stack)<CardHeaderProps>`
     (status === "approved" && theme.palette.info.main) ||
     (status === "rejected" && theme.palette.error.main)};
   padding: 4px 8px;
-  border-radius: 8px 8px 0 0;
 `;
 
 const CreatedTimeText = styled(Typography)`
