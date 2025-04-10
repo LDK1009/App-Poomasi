@@ -20,10 +20,10 @@ export default function LabelBottomNavigation() {
       href: "/",
     },
     {
-      label: "테스터 찾기",
+      label: "파트너 찾기",
       value: "search",
       icon: <SearchOutlined />,
-      href: "/",
+      href: "/partners",
     },
     {
       label: "마이페이지",

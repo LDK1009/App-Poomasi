@@ -42,6 +42,7 @@ const SignInSuccessContainer = () => {
     
     getUserInfo();
     checkSignInUp();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setUser]);
 
   return (

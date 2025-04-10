@@ -7,13 +7,13 @@ import { enqueueSnackbar } from "notistack";
 const PartnerCard = ({ info }: { info: UserInformationType }) => {
   const { user } = useAuthStore();
 
-  // 파트너 추가 함수
+  // 파트너 신청 함수
   async function handleAddPartner() {
     const { data: isAlreadyPartnerRelationship, error: isAlreadyPartnerRelationshipError } =
       await getIsAlreadyPartnerRelationship(user.uid, info.id);
 
     if (isAlreadyPartnerRelationshipError) {
-      enqueueSnackbar("파트너 추가 실패", { variant: "error" });
+      enqueueSnackbar("파트너 신청 실패", { variant: "error" });
       return;
     }
 
@@ -29,11 +29,11 @@ const PartnerCard = ({ info }: { info: UserInformationType }) => {
     });
 
     if (error) {
-      enqueueSnackbar("파트너 추가 실패", { variant: "error" });
+      enqueueSnackbar("파트너 신청 실패", { variant: "error" });
       return;
     }
 
-    enqueueSnackbar("파트너 추가 성공", { variant: "success" });
+    enqueueSnackbar("파트너 신청 성공", { variant: "success" });
   }
 
   return (
@@ -42,7 +42,7 @@ const PartnerCard = ({ info }: { info: UserInformationType }) => {
         {info.app_name}
       </Typography>
       <Button onClick={handleAddPartner} variant="contained" color="primary" fullWidth sx={{ color: "white" }}>
-        파트너 추가
+        파트너 신청
       </Button>
     </Container>
   );
