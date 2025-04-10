@@ -4,7 +4,7 @@ import * as React from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { Paper, styled } from "@mui/material";
-import { CottageOutlined, PersonOutlineOutlined, SearchOutlined } from "@mui/icons-material";
+import { CottageOutlined, HandshakeOutlined, PersonOutlineOutlined, SearchOutlined } from "@mui/icons-material";
 import { mixinFlex } from "@/styles/mixins";
 import Link from "next/link";
 
@@ -24,6 +24,12 @@ export default function LabelBottomNavigation() {
       value: "search",
       icon: <SearchOutlined />,
       href: "/partners",
+    },
+    {
+      label: "내 파트너",
+      value: "partner",
+      icon: <HandshakeOutlined />,
+      href: "/my-page/partner-relationship",
     },
     {
       label: "마이페이지",
