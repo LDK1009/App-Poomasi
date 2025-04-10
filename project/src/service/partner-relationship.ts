@@ -86,3 +86,20 @@ export async function getIsAlreadyPartnerRelationship(requesterId: string, appro
 
   return { data: false, error: null };
 }
+
+// 내 파트너 조회
+export async function getMyPartners(requesterId: string) {
+  const response = await supabase
+    .from("partner_relationship")
+    .select(
+      `
+    *,
+    requester_info:users!partner-relationship_approver_id_fkey(*),
+    approver_info:users!partner-relationship_requester_id_fkey(*)
+    `
+    )
+    .eq("requester_id", requesterId)
+    .eq("status", "approved");
+
+  return response;
+}
