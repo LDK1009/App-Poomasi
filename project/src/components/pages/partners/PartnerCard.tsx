@@ -1,14 +1,23 @@
+import { getCurrentUserIsSignIn } from "@/service/auth";
 import { getIsAlreadyPartnerRelationship, postPartnerRelationship } from "@/service/partner-relationship";
 import { useAuthStore } from "@/store";
 import { UserInformationType } from "@/types/user";
 import { Button, Grid2, styled, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
 import { enqueueSnackbar } from "notistack";
 
 const PartnerCard = ({ info }: { info: UserInformationType }) => {
   const { user } = useAuthStore();
-
+  const router = useRouter();
   // 파트너 신청 함수
   async function handleAddPartner() {
+    const isSignIn = await getCurrentUserIsSignIn();
+    if (isSignIn === false) {
+      enqueueSnackbar("로그인 후 이용해주세요.", { variant: "warning" });
+      router.push("/auth/sign-in");
+      return;
+    }
+
     const { data: isAlreadyPartnerRelationship, error: isAlreadyPartnerRelationshipError } =
       await getIsAlreadyPartnerRelationship(user.uid, info.id);
 
