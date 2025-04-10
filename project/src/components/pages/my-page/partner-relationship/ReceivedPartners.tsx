@@ -2,7 +2,7 @@ import { getCurrentUserUID } from "@/service/auth";
 import { getReceivedPartnerRelationship } from "@/service/partner-relationship";
 import { usePartnerRelationshipStore } from "@/store/PartnerRelationshipStore";
 import { PartnerRelationshipItemType } from "@/types/partner-relationship";
-import { styled } from "@mui/material";
+import { styled, Typography } from "@mui/material";
 import { enqueueSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 import Loading from "@/components/common/Loading";
@@ -38,6 +38,10 @@ const ReceivedPartners = () => {
 
   if (loading) {
     return <Loading />;
+  }
+
+  if (receivedPartners.length === 0) {
+    return <Typography variant="h6" fontWeight="bold" color="primary.light" align="center">받은 요청이 없습니다.</Typography>;
   }
 
   return (

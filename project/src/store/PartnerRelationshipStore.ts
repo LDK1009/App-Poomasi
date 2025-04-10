@@ -11,6 +11,9 @@ interface PartnerRelationshipStore {
   setMyPartners: (partners: PartnerRelationshipItemType[]) => void;
   setRequestedPartners: (partners: PartnerRelationshipItemType[]) => void;
   setReceivedPartners: (partners: PartnerRelationshipItemType[]) => void;
+
+  deleteRequestedPartner: (id: number) => void;
+  deleteReceivedPartner: (id: number) => void;
 }
 
 // 파트너 스토어 생성
@@ -23,4 +26,11 @@ export const usePartnerRelationshipStore = create<PartnerRelationshipStore>()((s
   setMyPartners: (partners) => set({ myPartners: partners }),
   setRequestedPartners: (partners) => set({ requestedPartners: partners }),
   setReceivedPartners: (partners) => set({ receivedPartners: partners }),
+
+  deleteRequestedPartner: (id) => set((state) => ({
+    requestedPartners: state.requestedPartners.filter((partner) => partner.id !== id),
+  })),
+  deleteReceivedPartner: (id) => set((state) => ({
+    receivedPartners: state.receivedPartners.filter((partner) => partner.id !== id),
+  })),
 }));

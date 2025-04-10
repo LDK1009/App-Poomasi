@@ -8,7 +8,7 @@ export type PartnerRelationshipItemType = PartnerRelationshipTableType & {
 
 // 파트너 관계 테이블 타입
 export type PartnerRelationshipTableType = {
-  id?: string;
+  id?: number;
   requester_id: string;
   approver_id: string;
   status: "requested" | "approved" | "rejected";

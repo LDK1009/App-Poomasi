@@ -3,6 +3,9 @@ import Image from "next/image";
 import { formatDate } from "@/utils/time";
 import { ForwardToInboxRounded } from "@mui/icons-material";
 import { PartnerRelationshipItemType } from "@/types/partner-relationship";
+import { deletePartnerRelationship, updatePartnerRelationship } from "@/service/partner-relationship";
+import { enqueueSnackbar } from "notistack";
+import { usePartnerRelationshipStore } from "@/store/PartnerRelationshipStore";
 // 하위 컴포넌트
 
 type PropsType = {
@@ -11,16 +14,39 @@ type PropsType = {
 };
 
 const PartnerRelationshipCard = ({ info, type }: PropsType) => {
+  const { deleteRequestedPartner, deleteReceivedPartner } = usePartnerRelationshipStore();
+
   async function handleCancelButtonClick() {
-    alert("개발중인 기능입니다.");
+    const { error } = await deletePartnerRelationship(info.requester_id, info.approver_id);
+    if (error) {
+      enqueueSnackbar("요청 취소 실패", { variant: "error" });
+      return;
+    }
+
+    deleteRequestedPartner(info.id as number);
+    enqueueSnackbar("요청 취소 성공", { variant: "success" });
   }
 
   async function handleRejectButtonClick() {
-    alert("개발중인 기능입니다.");
+    const { error } = await updatePartnerRelationship("rejected", info.requester_id, info.approver_id);
+    if (error) {
+      enqueueSnackbar("요청 거절 실패", { variant: "error" });
+      return;
+    }
+
+    deleteReceivedPartner(info.id as number);
+    enqueueSnackbar("요청 거절 성공", { variant: "success" });
   }
 
   async function handleApproveButtonClick() {
-    alert("개발중인 기능입니다.");
+    const { error } = await updatePartnerRelationship("approved", info.requester_id, info.approver_id);
+    if (error) {
+      enqueueSnackbar("요청 수락 실패", { variant: "error" });
+      return;
+    }
+
+    deleteReceivedPartner(info.id as number);
+    enqueueSnackbar("요청 수락 성공", { variant: "success" });
   }
 
   return (
