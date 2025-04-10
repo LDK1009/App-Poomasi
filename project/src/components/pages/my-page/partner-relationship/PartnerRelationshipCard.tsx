@@ -11,14 +11,16 @@ type PropsType = {
 };
 
 const PartnerRelationshipCard = ({ info, type }: PropsType) => {
-  async function handleButtonClick(type: "requested" | "received") {
-    if (type === "requested") {
-      alert("개발중인 기능입니다.");
-    }
+  async function handleCancelButtonClick() {
+    alert("개발중인 기능입니다.");
+  }
 
-    if (type === "received") {
-      alert("개발중인 기능입니다.");
-    }
+  async function handleRejectButtonClick() {
+    alert("개발중인 기능입니다.");
+  }
+
+  async function handleApproveButtonClick() {
+    alert("개발중인 기능입니다.");
   }
 
   return (
@@ -40,7 +42,7 @@ const PartnerRelationshipCard = ({ info, type }: PropsType) => {
       <CardContent>
         <PersonWrapper>
           <RoleText variant="caption" align="left">
-            요청 발신
+            발신자
           </RoleText>
           <AppNameText variant="body2" align="left">
             {info.requester_info.app_name}
@@ -49,7 +51,7 @@ const PartnerRelationshipCard = ({ info, type }: PropsType) => {
         <ForwardToInboxRounded color="primary" />
         <PersonWrapper>
           <RoleText variant="caption" align="right">
-            요청 수신
+            수신자
           </RoleText>
           <AppNameText variant="body2" align="right">
             {info.approver_info.app_name}
@@ -59,10 +61,21 @@ const PartnerRelationshipCard = ({ info, type }: PropsType) => {
 
       {/* 푸터 */}
       <CardFooter>
-        <CancelButton onClick={() => handleButtonClick(type)} variant="outlined" color="primary" fullWidth>
-          {type === "requested" && "요청 취소"}
-          {type === "received" && "승인"}
-        </CancelButton>
+        {type === "requested" && (
+          <CancelButton onClick={handleCancelButtonClick} variant="outlined" color="primary" fullWidth>
+            요청 취소
+          </CancelButton>
+        )}
+        {type === "received" && (
+          <>
+            <RejectButton onClick={handleRejectButtonClick} variant="outlined" color="primary" fullWidth>
+              거절
+            </RejectButton>
+            <ApproveButton onClick={handleApproveButtonClick} variant="contained" color="primary" fullWidth>
+              수락
+            </ApproveButton>
+          </>
+        )}
       </CardFooter>
     </CardContainer>
   );
@@ -129,4 +142,14 @@ const CancelButton = styled(Button)`
   border-right: none;
   border-bottom: none;
   border-left: none;
+`;
+
+const RejectButton = styled(CancelButton)`
+  border-bottom-right-radius: 0pz;
+`;
+
+const ApproveButton = styled(RejectButton)`
+  border-bottom-left-radius: 0px;
+  box-shadow: none;
+  color: ${({ theme }) => theme.palette.text.white};
 `;
