@@ -60,11 +60,9 @@ const PartnerCard = ({ info }: { info: UserInformationType }) => {
 export default PartnerCard;
 
 const Container = styled(Grid2)`
-  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  row-gap: 8px;
+  justify-content: space-between;
   border: 1px solid ${({ theme }) => theme.palette.primary.dark};
   border-radius: 8px;
   padding: 16px;
