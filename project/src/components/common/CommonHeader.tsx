@@ -53,7 +53,7 @@ const CommonHeader = () => {
   const drawerWidth = 250;
   const navItems = [
     { title: "홈", path: "/", icon: <CottageOutlined /> },
-    { title: "파트너 찾기", path: "/", icon: <SearchOutlined /> },
+    { title: "파트너 찾기", path: "/partners", icon: <SearchOutlined /> },
     user.isSignIn
       ? { title: "마이페이지", path: "/my-page", icon: <PersonOutline /> }
       : { title: "로그인", path: "/auth/sign-in", icon: <PersonOutline /> },
