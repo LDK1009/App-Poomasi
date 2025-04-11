@@ -79,7 +79,7 @@ const MyPartnerCard = ({ partner }: { partner: PartnerRelationshipItemType }) =>
       </CardHeader>
 
       <CardContent>
-        <StyledAccordion defaultExpanded>
+        <StyledAccordion>
           <StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
             <SectionTitle>파트너 정보</SectionTitle>
           </StyledAccordionSummary>
@@ -93,7 +93,7 @@ const MyPartnerCard = ({ partner }: { partner: PartnerRelationshipItemType }) =>
           </AccordionDetails>
         </StyledAccordion>
 
-        <StyledAccordion defaultExpanded>
+        <StyledAccordion>
           <StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
             <SectionTitle>링크 정보</SectionTitle>
           </StyledAccordionSummary>
