@@ -10,10 +10,10 @@ import {
   IconButton,
 } from "@mui/material";
 import { enqueueSnackbar } from "notistack";
-import VerifiedIcon from "@mui/icons-material/Verified";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useAuthStore } from "@/store";
+import { HandshakeRounded } from "@mui/icons-material";
 
 // 복사 함수
 const copyToClipboard = (text: string) => {
@@ -75,12 +75,11 @@ const MyPartnerCard = ({ partner }: { partner: PartnerRelationshipItemType }) =>
   return (
     <CardContainer>
       <CardHeader>
-        <Typography variant="h6" fontWeight="bold" color="white">
+        <HeaderText variant="body1">
           {partnerInfo.app_name}
-        </Typography>
+        </HeaderText>
         <PartnerBadge>
-          파트너
-          <VerifiedIcon fontSize="small" sx={{ color: "#FFD700" }} />
+          <HandshakeRounded fontSize="small" sx={{ color: "white" }} />
         </PartnerBadge>
       </CardHeader>
 
@@ -133,8 +132,20 @@ const CardHeader = styled(Stack)`
   justify-content: space-between;
   align-items: center;
   column-gap: 16px;
-  padding: 16px;
+  padding: 8px 16px;
   background-color: ${({ theme }) => theme.palette.primary.main};
+`;
+
+const HeaderText = styled(Typography)`
+  font-weight: bold;
+  color: ${({ theme }) => theme.palette.text.white};
+  display: -webkit-box;
+  -webkit-line-clamp: 1; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 `;
 
 const PartnerBadge = styled(Stack)`
