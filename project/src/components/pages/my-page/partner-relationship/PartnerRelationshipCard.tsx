@@ -48,6 +48,8 @@ const PartnerRelationshipCard = ({ info, type }: PropsType) => {
     enqueueSnackbar("요청 수락 성공", { variant: "success" });
   }
 
+  console.log(info);
+  
   return (
     <CardContainer>
       {/* 헤더 */}

@@ -41,8 +41,8 @@ export async function getSentPartnerRelationship(requesterId: string) {
     .select(
       `
       *,
-      requester_info:users!partner-relationship_approver_id_fkey(*),
-      approver_info:users!partner-relationship_requester_id_fkey(*)
+      requester_info:users!partner-relationship_requester_id_fkey(*),
+      approver_info:users!partner-relationship_approver_id_fkey(*)
       `
     )
     .eq("requester_id", requesterId)
@@ -58,8 +58,8 @@ export async function getReceivedPartnerRelationship(approverId: string) {
     .select(
       `
     *,
-    requester_info:users!partner-relationship_approver_id_fkey(*),
-    approver_info:users!partner-relationship_requester_id_fkey(*)
+    requester_info:users!partner-relationship_requester_id_fkey(*),
+    approver_info:users!partner-relationship_approver_id_fkey(*)
     `
     )
     .eq("approver_id", approverId)
@@ -74,8 +74,10 @@ export async function getIsAlreadyPartnerRelationship(requesterId: string, appro
   const { data, error } = await supabase
     .from("partner_relationship")
     .select(`*`)
-    .or(`and(requester_id.eq.${requesterId},approver_id.eq.${approverId}),and(requester_id.eq.${approverId},approver_id.eq.${requesterId})`);
-  
+    .or(
+      `and(requester_id.eq.${requesterId},approver_id.eq.${approverId}),and(requester_id.eq.${approverId},approver_id.eq.${requesterId})`
+    );
+
   if (error) {
     return { data: null, error };
   }
