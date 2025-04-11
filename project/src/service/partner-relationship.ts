@@ -88,7 +88,7 @@ export async function getIsAlreadyPartnerRelationship(requesterId: string, appro
 }
 
 // 내 파트너 조회
-export async function getMyPartners(requesterId: string) {
+export async function getMyPartners(userId: string) {
   const response = await supabase
     .from("partner_relationship")
     .select(
@@ -98,7 +98,7 @@ export async function getMyPartners(requesterId: string) {
     approver_info:users!partner-relationship_requester_id_fkey(*)
     `
     )
-    .eq("requester_id", requesterId)
+    .or(`requester_id.eq.${userId},approver_id.eq.${userId}`)
     .eq("status", "approved");
 
   return response;
