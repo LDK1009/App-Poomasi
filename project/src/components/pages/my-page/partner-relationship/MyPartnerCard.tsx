@@ -13,6 +13,7 @@ import { enqueueSnackbar } from "notistack";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { useAuthStore } from "@/store";
 
 // 복사 함수
 const copyToClipboard = (text: string) => {
@@ -66,11 +67,16 @@ const CopyableLink = ({ label, value }: { label: string; value: string }) => {
 /////////// 상위 컴포넌트 ///////////
 // 파트너 카드 컴포넌트
 const MyPartnerCard = ({ partner }: { partner: PartnerRelationshipItemType }) => {
+  const { user } = useAuthStore();
+  const userId = user?.uid;
+
+  const partnerInfo = partner.requester_info.id === userId ? partner.approver_info : partner.requester_info;
+
   return (
     <CardContainer>
       <CardHeader>
         <Typography variant="h6" fontWeight="bold" color="white">
-          {partner.approver_info.app_name}
+          {partnerInfo.app_name}
         </Typography>
         <PartnerBadge>
           파트너
@@ -86,8 +92,8 @@ const MyPartnerCard = ({ partner }: { partner: PartnerRelationshipItemType }) =>
           <AccordionDetails>
             <InfoGroupBox>
               <InfoGrid>
-                <CopyableInfo label="앱 이름" value={partner.approver_info.app_name} />
-                <CopyableInfo label="이메일" value={partner.approver_info.email} />
+                <CopyableInfo label="앱 이름" value={partnerInfo.app_name} />
+                <CopyableInfo label="이메일" value={partnerInfo.email} />
               </InfoGrid>
             </InfoGroupBox>
           </AccordionDetails>
@@ -100,9 +106,9 @@ const MyPartnerCard = ({ partner }: { partner: PartnerRelationshipItemType }) =>
           <AccordionDetails>
             <InfoGroupBox>
               <InfoGrid>
-                <CopyableLink label="안드로이드 앱 링크" value={partner.approver_info.android_app_link} />
-                <CopyableLink label="구글 폼 링크" value={partner.approver_info.google_form_link} />
-                <CopyableLink label="웹 참여 링크" value={partner.approver_info.web_participation_link} />
+                <CopyableLink label="안드로이드 앱 링크" value={partnerInfo.android_app_link} />
+                <CopyableLink label="구글 폼 링크" value={partnerInfo.google_form_link} />
+                <CopyableLink label="웹 참여 링크" value={partnerInfo.web_participation_link} />
               </InfoGrid>
             </InfoGroupBox>
           </AccordionDetails>
@@ -126,6 +132,7 @@ const CardHeader = styled(Stack)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  column-gap: 16px;
   padding: 16px;
   background-color: ${({ theme }) => theme.palette.primary.main};
 `;

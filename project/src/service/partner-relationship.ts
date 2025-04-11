@@ -96,8 +96,8 @@ export async function getMyPartners(userId: string) {
     .select(
       `
     *,
-    requester_info:users!partner-relationship_approver_id_fkey(*),
-    approver_info:users!partner-relationship_requester_id_fkey(*)
+    requester_info:users!partner-relationship_requester_id_fkey(*),
+    approver_info:users!partner-relationship_approver_id_fkey(*)
     `
     )
     .or(`requester_id.eq.${userId},approver_id.eq.${userId}`)
