@@ -47,8 +47,6 @@ const PartnerRelationshipCard = ({ info, type }: PropsType) => {
     deleteReceivedPartner(info.id as number);
     enqueueSnackbar("요청 수락 성공", { variant: "success" });
   }
-
-  console.log(info);
   
   return (
     <CardContainer>
