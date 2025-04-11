@@ -29,7 +29,7 @@ const SignInContainer = () => {
           환영합니다!
         </HeadingText>
         <BodyText variant="body2" align="center">
-          카카오 계정으로 간편하게 로그인하고
+          구글 계정으로 간편하게 로그인하고
           <br />
           다양한 서비스를 이용해보세요
         </BodyText>
