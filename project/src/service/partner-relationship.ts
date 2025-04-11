@@ -69,13 +69,13 @@ export async function getReceivedPartnerRelationship(approverId: string) {
   return response;
 }
 
-// 이미 파트너 관계가 있는지 확인
+// 이미 파트너 관계가 있는지 확인 (양방향 체크)
 export async function getIsAlreadyPartnerRelationship(requesterId: string, approverId: string) {
   const { data, error } = await supabase
     .from("partner_relationship")
     .select(`*`)
-    .eq("requester_id", requesterId)
-    .eq("approver_id", approverId);
+    .or(`and(requester_id.eq.${requesterId},approver_id.eq.${approverId}),and(requester_id.eq.${approverId},approver_id.eq.${requesterId})`);
+  
   if (error) {
     return { data: null, error };
   }
