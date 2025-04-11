@@ -10,11 +10,11 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 // SEO 메타데이터
 export const metadata: Metadata = {
   manifest: "/manifest.json",
-  title: "앱 품앗이",
+  title: "앱 품앗이 - 구글 플레이스토어 비공개 테스트 품앗이 플랫폼",
   description: "구글 플레이스토어 비공개 테스트 품앗이 플랫폼",
   keywords: "앱 품앗이, 구글 플레이스토어 비공개 테스트 품앗이 플랫폼",
   openGraph: {
-    title: "앱 품앗이",
+    title: "앱 품앗이 - 구글 플레이스토어 비공개 테스트 품앗이 플랫폼",
     description: "구글 플레이스토어 비공개 테스트 품앗이 플랫폼",
     url: "https://www.app-poomasi.site",
     images: [
